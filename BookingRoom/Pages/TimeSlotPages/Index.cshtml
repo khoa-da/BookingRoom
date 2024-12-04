@@ -1,0 +1,54 @@
+﻿@page
+@model BookingRoom.Pages.TimeSlotPages.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TimeSlot[0].StartTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TimeSlot[0].EndTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TimeSlot[0].Duration)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TimeSlot[0].Description)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.TimeSlot) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Duration)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.SlotId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.SlotId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.SlotId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
